@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import './App.css';
 
 export class Pancake extends React.Component {
-	
+
 	render() {
-		var a = './wood.png';
+		var questions = this.props.questions;
 		return (
-			<div></div>
-		);
+		<ul>
+		{questions.map(function(data, index){
+									return <li key={ index }>{data.title}</li>;
+		})}
+		</ul>);
 	}
 }
-
