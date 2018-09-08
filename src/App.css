@@ -23,6 +23,10 @@
   display:inline-block;
 }
 
+.search-bar-form{
+  margin-left:10px;
+}
+
 .search-barr{
   margin-left:5px;
 }
