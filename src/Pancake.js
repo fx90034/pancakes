@@ -6,7 +6,7 @@ export class Pancake extends React.Component {
 	render() {
 		var a = './wood.png';
 		return (
-			<img src={ this.props.imageUri}/>
+			<div></div>
 		);
 	}
 }
