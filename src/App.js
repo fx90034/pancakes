@@ -11,18 +11,18 @@ class App extends Component {
     this.state = {
       a:"",
 
-      alr:[]
+      alr:[{title:'dog'},{title:'cat'}]
     };
     this.handleChange = this.handleChange.bind(this);
     this.search = this.search.bind(this);
   }
 
-  search (q){
+  async search (q){
     const STACK_API_KEY = 'Wf4WyQYvjRRtsqcIFLEPpg((';
     let a = q.split(" ").join("%20");
     let aurl = 'https://api.stackexchange.com//2.2/search?order=desc&sort=activity&intitle='+a +'&site=stackoverflow&key='+STACK_API_KEY;
     console.log(aurl);
-    axios.get(aurl).then(function(res){
+    this.state.alr = await axios.get(aurl).then(function(res){
       res.data.items.forEach(function(el){
         delete el.owner;
         delete el.is_answered;
@@ -38,16 +38,9 @@ class App extends Component {
 
 
       });
-      alr = res.data.items;
+      return res.data.items;
     });
 
-    for(let i = 0; i < this.state.al.length; i++){
-      this.state.alr.push(
-        <div className="lista" key={i}>
-          asdf
-        </div>
-      );
-    }
     this.forceUpdate();
   }
 
@@ -68,10 +61,7 @@ class App extends Component {
             </form>
           </div>
         </header>
-        <div className="answerlist">
-          {this.state.alr}
-        </div>
-        <Pancake></Pancake>
+        <Pancake questions={this.state.alr}/>
       </div>
     );
   }
