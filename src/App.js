@@ -15,6 +15,7 @@ class App extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.search = this.search.bind(this);
+    this.handleSub = this.handleSub.bind(this);
   }
 
   async search (q){
@@ -36,7 +37,6 @@ class App extends Component {
         delete el.closed_reason;
         delete el.last_edit_date;
 
-
       });
       return res.data.items;
     });
@@ -48,13 +48,19 @@ class App extends Component {
     this.setState({a: event.target.value});
   }
 
+  handleSub (e){
+    e.preventDefault();
+    console.log("sub");
+     this.search(this.state.a);
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">pancakes</h1>
           <div className="search-bar">
-            <form className="search-bar-form" autoComplete="off">
+            <form className="search-bar-form" autoComplete="off" onSubmit={this.handleSub}>
               search:
               <input className="search-barr" type="text" name="search" value={this.state.a} onChange={this.handleChange}/>
               <button type="button" className="submit" onClick={() => this.search(this.state.a)}><i className="fa fa-search fa-search"></i></button>

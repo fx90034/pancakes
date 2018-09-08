@@ -59,15 +59,27 @@
   font-size: large;
 }
 
-.lista{
-  margin: 20px auto;
-  height:100px;
-  width:600px;
-  border-radius:5px;
-  border-left-width:2px;
-  border-left-color:black;
-  border-left-style:solid;
+.lista {
+  margin:20px auto;
+  width:350px; 
+  height:100px; 
   background-color:rgb(255,238,221);
+  position:relative;
+}
+
+.listb{
+  float:left;
+  width:340px;
+  padding-top:5px;
+}
+
+.bracket{
+  float:left;
+  height:100px;
+  width:10px;
+  background: url(wood3.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100px;
 }
 
 @keyframes App-logo-spin {
