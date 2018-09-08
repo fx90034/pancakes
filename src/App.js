@@ -11,10 +11,12 @@ class App extends Component {
           <div className="search-bar">
             <form>
               search: 
-              <input type="text" name="search"></input>
+              <input className="search-barr" type="text" name="search"></input>
             </form>
           </div>
         </header>
+        {/*<Pancake gif=""/>
+        <p>asdfafasd</p>*/}
       </div>
     );
   }
