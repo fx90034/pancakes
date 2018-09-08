@@ -59,6 +59,17 @@
   font-size: large;
 }
 
+.lista{
+  margin: 20px auto;
+  height:100px;
+  width:600px;
+  border-radius:5px;
+  border-left-width:2px;
+  border-left-color:black;
+  border-left-style:solid;
+  background-color:rgb(255,238,221);
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

@@ -10,6 +10,8 @@ class App extends Component {
     super();
     this.state = {
       a:"",
+      al:[1,2,3],
+      alr:[]
     };
     this.handleChange = this.handleChange.bind(this);
     this.search = this.search.bind(this);
@@ -23,6 +25,15 @@ class App extends Component {
     axios.get(aurl).then(function(res){
       console.log(res.data);
     });
+
+    for(let i = 0; i < this.state.al.length; i++){
+      this.state.alr.push(
+        <div className="lista" key={i}>
+          asdf
+        </div>
+      );
+    }
+    this.forceUpdate();
   }
 
   handleChange(event) {
@@ -42,7 +53,8 @@ class App extends Component {
             </form>
           </div>
         </header>
-        <div>
+        <div className="answerlist">
+          {this.state.alr}
         </div>
         <Pancake></Pancake>
       </div>
