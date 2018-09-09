@@ -10,7 +10,7 @@
   display: block;
 }
 
-.left{
+.left1{
   text-align:left;
 }
 
@@ -38,10 +38,6 @@
 
 .edit{
   margin-left:-2px;
-}
-
-.sorta{
-
 }
 
 #search-barr{
@@ -88,12 +84,63 @@ box-shadow:
   margin-left:5px;
 }
 
-.sort{
+.pizza{
+  display:block;
+  margin-top:45px;
+}
 
+.options{
+  margin:0 auto;
+  width:260px;
+  margin-bottom:10px;
+}
+
+.sort{
+  margin-top:3px;
+  margin-bottom:5px;
+  float:left;
+  width:70px;
+}
+
+.sorta{
+  float:left;
+  width:80px;
+  height:30px;
+  margin-right:10px;
+  background-color:white;
+  border-style:solid;
+  border-width:2px;
+}
+
+.sortr{
+  float:left;
+  width:90px;
+  height:30px;
+  background-color:white;
+  border-style:solid;
+  border-width:2px;
+}
+
+button:focus{
+  background-color:white;
+  -webkit-box-shadow:
+0 22px 2px 0 rgba(199, 199, 199, 0.25),
+0 1px 1px 0 #fff,
+
+0 15px 15px 0 rgba(41, 41, 41, 0.02) inset;
+-moz-box-shadow:
+0 2px 2px 0 rgba(199, 199, 199, 0.25),
+0 1px 1px 0 #fff,
+
+0 15px 15px 0 rgba(41, 41, 41, 0.02) inset;
+box-shadow:
+0 2px 2px 0 rgba(199, 199, 199, 0.25),
+0 1px 1px 0 #fff,
+0 15px 15px 0 rgba(41, 41, 41, 0.02) inset;
 }
 
 blockquote{
-  background-color:rgb(255, 243, 219);
+  background-color:rgba(199, 199, 199, 0.25);
   width:650px;
 }
 

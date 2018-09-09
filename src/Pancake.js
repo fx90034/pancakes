@@ -14,8 +14,31 @@ export class Pancake extends React.Component {
 					data.title = data.title.replace("&#39", ".");
 					data.title = data.title.replace("&quot;", "\"");
 					data.title = data.title.replace("&quot", "\"");
+					if(data.index <1){
+						var str = `data.title = data.title.replace("&lt", "");
+									data.title = data.title.replace("&gt", ">");
+									data.title = data.title.replace("&#39", "'");
+									data.title = data.title.replace("&#39", ".");
+									data.title = data.title.replace("&quot;", "\"");
+									data.title = data.title.replace("&quot", "\"");`
+					
+						return <div className="listcont">
+							<div className="left1 pizza">{data.title}</div>
+							<div >
+								<div ></div>
+								<div className="left1">
+									<blockquote>
+									<code>
+											{str}
+										</code>
+									</blockquote>
 
-					if(data.index <4){
+								</div>
+							</div>
+						</div>;
+
+					}
+					else if(data.index <4){
 					var str = `data.title = data.title.replace("&lt", "");
 									data.title = data.title.replace("&gt", ">");
 									data.title = data.title.replace("&#39", "'");
@@ -24,10 +47,10 @@ export class Pancake extends React.Component {
 									data.title = data.title.replace("&quot", "\"");`
 					
 					return <div className="listcont">
-						<div className="left">{data.title}</div>
+						<div className="left1">{data.title}</div>
 						<div >
 							<div ></div>
-							<div className="left">
+							<div className="left1">
 								<blockquote>
 								<code>
 										{str}
@@ -41,7 +64,7 @@ export class Pancake extends React.Component {
 				  }
 				  else{
 				  	return <div className="listcont">
-						<div className="left">{data.title}</div>
+						<div className="left1">{data.title}</div>
 					</div>;
 				  }
 				})}

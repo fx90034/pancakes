@@ -10,12 +10,14 @@ class App extends Component {
     super();
     this.state = {
       a:"",
-
-      alr:[{title:'dog'},{title:'cat'}]
+      alr:[],
+      sortby: "activity",
     };
     this.handleChange = this.handleChange.bind(this);
     this.search = this.search.bind(this);
     this.handleSub = this.handleSub.bind(this);
+    this.togact = this.togact.bind(this);
+    this.togrel = this.togrel.bind(this);
   }
 
   async search (q){
@@ -29,7 +31,7 @@ class App extends Component {
     }
     console.log(b);
     let a = b.join("%20");
-    let aurl = 'https://api.stackexchange.com//2.2/search?order=desc&sort=activity&intitle='+a +'&site=stackoverflow&key='+STACK_API_KEY;
+    let aurl = 'https://api.stackexchange.com//2.2/search?order=desc&sort='+this.state.sortby +'&intitle='+a +'&site=stackoverflow&key='+STACK_API_KEY;
     console.log(aurl);
     this.state.alr = await axios.get(aurl).then(function(res){
       console.log(res.data.items);
@@ -49,10 +51,7 @@ class App extends Component {
         if(i < 3){
           el.index = i;
         }
-
-
       }
-
       return res.data.items;
     });
 
@@ -69,6 +68,16 @@ class App extends Component {
     this.search(this.state.a);
   }
 
+  togact(){
+    this.state.sortby = "activity";
+    console.log(this.state.sortby);
+  }
+
+  togrel(){
+    this.state.sortby = "relevance";
+    console.log(this.state.sortby);
+  }
+
 render() {
     return (
       <div className="App">
@@ -81,8 +90,11 @@ render() {
             </form>
           </div>
         </header>
-        <p class="sort">Sort by:</p>
-        <div class="sorta">Activity</div><div class="sortr">Relevance</div>
+        <div class="options">
+          <p class="sort">Sort by:</p>
+          <button class="sorta" onClick={this.togact}>Activity</button>
+          <button class="sortr" onClick={this.togrel}>Relevance</button>
+        </div>
         <Pancake questions={this.state.alr}/>
       </div>
       
