@@ -8,7 +8,7 @@ export class Pancake extends React.Component {
 		<ul>
 		{questions.map(function(data, index){
 									return <li key={ index }>{data.title}</li>;
-		})}
+							})}
 		</ul>);
 	}
 }
