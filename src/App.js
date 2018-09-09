@@ -10,12 +10,21 @@ class App extends Component {
     super();
     this.state = {
       a:"",
+<<<<<<< HEAD
       query:"",
       alr:[{title:'dog'},{title:'cat'}]
+=======
+      alr:[],
+      sortby: "activity",
+      actclass: "sorta orange",
+      relclass: "sortr",
+>>>>>>> 156aed172132af6b7e18fa481c4d3e70a081a468
     };
     this.handleChange = this.handleChange.bind(this);
     this.search = this.search.bind(this);
     this.handleSub = this.handleSub.bind(this);
+    this.togact = this.togact.bind(this);
+    this.togrel = this.togrel.bind(this);
   }
 
   async search (q){
@@ -32,7 +41,7 @@ class App extends Component {
     }
     console.log(b);
     let a = b.join("%20");
-    let aurl = 'https://api.stackexchange.com//2.2/search?order=desc&sort=activity&intitle='+a +'&site=stackoverflow&key='+STACK_API_KEY;
+    let aurl = 'https://api.stackexchange.com//2.2/search?order=desc&sort='+this.state.sortby +'&intitle='+a +'&site=stackoverflow&key='+STACK_API_KEY;
     console.log(aurl);
     this.state.alr = await axios.get(aurl).then(function(res){
       console.log(res.data.items);
@@ -52,13 +61,14 @@ class App extends Component {
         if(i < 3){
           el.index = i;
         }
-
-
       }
+<<<<<<< HEAD
         for(let i = 0; i < res.data.items.length; i++){
           let el = res.data.items[i];
           el.query = q
         }
+=======
+>>>>>>> 156aed172132af6b7e18fa481c4d3e70a081a468
       return res.data.items;
     });
 
@@ -75,6 +85,36 @@ class App extends Component {
     this.search(this.state.a);
   }
 
+  togact(){
+    this.state.sortby = "activity";
+    if(this.state.actclass !== "sorta orange"){
+      this.state.actclass= "sorta orange";
+      this.state.relclass="sortr";
+    }
+    else{
+      this.state.actclass= "sorta";
+      this.state.relclass= "sortr orange"
+    }
+    this.forceUpdate();
+  }
+
+  togrel(){
+    this.state.sortby = "relevance";
+    if(this.state.relclass !== "sortr orange"){
+      this.state.relclass="sortr orange";
+      this.state.actclass="sorta";
+    }
+    else{
+      this.state.relclass="sortr";
+      this.state.actclass="sorta orange";
+    }
+    this.forceUpdate();
+  }
+
+  componentDidMount(){
+
+  }
+
 render() {
     return (
       <div className="App">
@@ -87,20 +127,16 @@ render() {
             </form>
           </div>
         </header>
-        <p class="sort">Sort by:</p>
-        <div class="sorta">Activity</div><div class="sortr">Relevance</div>
+        <div className="options">
+          <p className="sort">Sort by:</p>
+          <button className={this.state.actclass} onClick={this.togact}>Activity</button>
+          <button className={this.state.relclass} onClick={this.togrel}>Relevance</button>
+        </div>
         <Pancake questions={this.state.alr}/>
       </div>
 
     );
   }
-
-
-
-
-
-
-
 
 }
 
