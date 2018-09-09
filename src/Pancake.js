@@ -5,10 +5,14 @@ export class Pancake extends React.Component {
 	render() {
 		var questions = this.props.questions;
 		return (
-		<ul>
-		{questions.map(function(data, index){
-									return <li key={ index }>{data.title}</li>;
-		})}
-		</ul>);
+		<div>
+			{questions.map(function(data, index){
+				return <div className="lista" key={ index }>
+					<div className="bracket"></div>
+					<div className="listb">{data.title}</div>
+					
+				</div>;
+			})}
+		</div>);
 	}
 }
