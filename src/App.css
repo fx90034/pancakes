@@ -121,6 +121,11 @@ box-shadow:
   border-width:2px;
 }
 
+.orange{
+  border-color:orange;
+}
+
+
 button:focus{
   background-color:white;
   -webkit-box-shadow:

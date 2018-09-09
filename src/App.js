@@ -12,6 +12,8 @@ class App extends Component {
       a:"",
       alr:[],
       sortby: "activity",
+      actclass: "sorta",
+      relclass: "sortr",
     };
     this.handleChange = this.handleChange.bind(this);
     this.search = this.search.bind(this);
@@ -70,12 +72,28 @@ class App extends Component {
 
   togact(){
     this.state.sortby = "activity";
-    console.log(this.state.sortby);
+    if(this.state.actclass !== "sorta orange"){
+      this.state.actclass= "sorta orange";
+      this.state.relclass="sortr";
+    }
+    else{
+      this.state.actclass= "sorta";
+      this.state.relclass= "sortr orange"
+    }
+    this.forceUpdate();
   }
 
   togrel(){
     this.state.sortby = "relevance";
-    console.log(this.state.sortby);
+    if(this.state.relclass !== "sortr orange"){
+      this.state.relclass="sortr orange";
+      this.state.actclass="sorta";
+    }
+    else{
+      this.state.relclass="sortr";
+      this.state.actclass="sorta orange";
+    }
+    this.forceUpdate();
   }
 
 render() {
@@ -92,8 +110,8 @@ render() {
         </header>
         <div class="options">
           <p class="sort">Sort by:</p>
-          <button class="sorta" onClick={this.togact}>Activity</button>
-          <button class="sortr" onClick={this.togrel}>Relevance</button>
+          <button class={this.state.actclass} onClick={this.togact}>Activity</button>
+          <button class={this.state.relclass} onClick={this.togrel}>Relevance</button>
         </div>
         <Pancake questions={this.state.alr}/>
       </div>

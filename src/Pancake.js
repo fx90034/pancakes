@@ -7,7 +7,12 @@ export class Pancake extends React.Component {
 		return (
 			<div className="container">
 				{questions.map(function(data){
-					data.title = decodeURIComponent(data.title);
+					try{
+						data.title = decodeURIComponent(data.title);
+					}
+					catch(error){
+						console.log(error);
+					}
 					data.title = data.title.replace("&lt;", "<");
 					data.title = data.title.replace("&gt;", ">");
 					data.title = data.title.replace("&#39;", "'");
