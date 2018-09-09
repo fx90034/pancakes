@@ -23,7 +23,8 @@ class App extends Component {
     let aurl = 'https://api.stackexchange.com//2.2/search?order=desc&sort=activity&intitle='+a +'&site=stackoverflow&key='+STACK_API_KEY;
     console.log(aurl);
     this.state.alr = await axios.get(aurl).then(function(res){
-      res.data.items.forEach(function(el){
+      for(let i = 0; i < res.data.items.length; i++){
+        let el = res.data.items[i];
         delete el.owner;
         delete el.is_answered;
         delete el.view_count;
@@ -35,9 +36,12 @@ class App extends Component {
         delete el.question_id;
         delete el.closed_reason;
         delete el.last_edit_date;
+        if(i < 3){
+          el.index = i;
+        }
 
+      }
 
-      });
       return res.data.items;
     });
 
