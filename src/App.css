@@ -2,61 +2,114 @@
   text-align: center;
 }
 
-.App-header {
-  background: url(wood2.png);
-  background-repeat: no-repeat;
-  background-size: 100% 76px;
-  width:800px;
-  height: 54px;
-  padding: 5px;
-  margin:0 auto;
-  color: white;
-  border-radius:5px;
+.hidden{
+  display: none;
 }
 
-.App-title {
-  font-size: 1.5em;
+.show {
+  display: block;
+}
+
+.left{
   text-align:left;
-  width:150px;
-  display:inline-block;
 }
 
-.search-bar{
+
+#search-bar{
   display:inline-block;
   margin-bottom:20px;
 }
 
-.search-bar-form{
+.dropdown 
+{
+  display:inline-block;
+}
+
+.dropdown:hover .dropdown-content 
+{
+    display: block;
+}
+
+
+#search-bar-form{
   margin-left:10px;
   font-size:17px;
 }
 
-.search-barr{
-  margin-left:5px;
-  padding-left:15px;
-  border-radius:15px;
-  border-width:2px;
-  border-style:none;
-  border-color:gray;
-  height:25px;
-  width:200px;
-  border-bottom-style:inset;
+.edit{
+  margin-left:-2px;
+}
+
+.sorta{
+
+}
+
+#search-barr{
+width:250px;
+height:30px;
+padding-left:15px;
+border-radius:6px;
+border:none;
+color:#0F0D0D;
+font-weight:500;
+background-color:#f7fafc;
+-webkit-box-shadow:
+0 -2px 2px 0 rgba(199, 199, 199, 0.25),
+0 1px 1px 0 #fff,
+0 2px 2px 1px #fafafa,
+0 2px 4px 0 #b2b2b2 inset,
+0 -1px 1px 0 #f2f2f2 inset,
+0 15px 15px 0 rgba(41, 41, 41, 0.02) inset;
+-moz-box-shadow:
+0 -2px 2px 0 rgba(199, 199, 199, 0.25),
+0 1px 1px 0 #fff,
+0 2px 2px 1px #fafafa,
+0 2px 4px 0 #b2b2b2 inset,
+0 -1px 1px 0 #f2f2f2 inset,
+0 15px 15px 0 rgba(41, 41, 41, 0.02) inset;
+box-shadow:
+0 -2px 2px 0 rgba(199, 199, 199, 0.25),
+0 1px 1px 0 #fff,
+0 2px 2px 1px #fafafa,
+0 2px 4px 0 #b2b2b2 inset,
+0 -1px 1px 0 #f2f2f2 inset,
+0 15px 15px 0 rgba(41, 41, 41, 0.02) inset;
+}
+
+::placeholder{
+  color:#848383;
 }
 
 .submit{
-  border-radius:50%;
-  border-right-style:none;
-  border-width:2px;
-  border-style:none;
-  border-color:gray;
-  border-bottom-style:inset;
+  border:none;
   background-color:white;
   height:30px;
   width:30px;
+  margin-left:5px;
+}
+
+.sort{
+
+}
+
+blockquote{
+  background-color:rgb(255, 243, 219);
+  width:650px;
 }
 
 .App-intro {
   font-size: large;
+}
+
+.container{
+  width:650px;
+  margin-left:auto;
+
+}
+
+code{
+  white-space: pre-line;
+  line-height:1px;
 }
 
 .lista{
@@ -67,10 +120,13 @@
   border-left-width:2px;
   border-left-color:black;
   border-left-style:solid;
-  background-color:rgb(255,238,221);
 }
+
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+  

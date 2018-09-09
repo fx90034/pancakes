@@ -10,19 +10,32 @@ class App extends Component {
     super();
     this.state = {
       a:"",
-
+      query:"",
       alr:[{title:'dog'},{title:'cat'}]
     };
     this.handleChange = this.handleChange.bind(this);
     this.search = this.search.bind(this);
+    this.handleSub = this.handleSub.bind(this);
   }
 
   async search (q){
+    this.setState({
+      query: q
+    });
     const STACK_API_KEY = 'Wf4WyQYvjRRtsqcIFLEPpg((';
-    let a = q.split(" ").join("%20");
+    let unds = ["how","to","a","an","i","am","do"];
+    let b = q.toLowerCase().split(" ");
+    for(let i = b.length-1; i >= 0; i--){
+      if(unds.indexOf(b[i]) >= 0){
+        b.splice(i,1);
+      }
+    }
+    console.log(b);
+    let a = b.join("%20");
     let aurl = 'https://api.stackexchange.com//2.2/search?order=desc&sort=activity&intitle='+a +'&site=stackoverflow&key='+STACK_API_KEY;
     console.log(aurl);
     this.state.alr = await axios.get(aurl).then(function(res){
+      console.log(res.data.items);
       for(let i = 0; i < res.data.items.length; i++){
         let el = res.data.items[i];
         delete el.owner;
@@ -40,8 +53,12 @@ class App extends Component {
           el.index = i;
         }
 
-      }
 
+      }
+        for(let i = 0; i < res.data.items.length; i++){
+          let el = res.data.items[i];
+          el.query = q
+        }
       return res.data.items;
     });
 
@@ -52,23 +69,39 @@ class App extends Component {
     this.setState({a: event.target.value});
   }
 
-  render() {
+  handleSub (e){
+    e.preventDefault();
+    console.log("sub");
+    this.search(this.state.a);
+  }
+
+render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">pancakes</h1>
-          <div className="search-bar">
-            <form className="search-bar-form" autoComplete="off">
-              search:
-              <input className="search-barr" type="text" name="search" value={this.state.a} onChange={this.handleChange}/>
-              <button type="button" className="submit" onClick={() => this.search(this.state.a)}><i className="fa fa-search fa-search"></i></button>
+        <header id="App-header">
+          <h1 id="App-title">pancakes</h1>
+          <div id="search-bar">
+            <form id="search-bar-form" autoComplete="off" onSubmit={this.handleSub}>
+              <input id="search-barr" type="text" name="search" value={this.state.a} placeholder="search" onChange={this.handleChange}/>
+              <button type="button" className="submit" onClick={() => this.search(this.state.a)}><i className="edit fa fa-search fa-search"></i></button>
             </form>
           </div>
         </header>
+        <p class="sort">Sort by:</p>
+        <div class="sorta">Activity</div><div class="sortr">Relevance</div>
         <Pancake questions={this.state.alr}/>
       </div>
+
     );
   }
+
+
+
+
+
+
+
+
 }
 
 export default App;
