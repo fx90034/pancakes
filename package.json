@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "algolia": "0.0.0",
+    "algoliasearch": "^3.30.0",
     "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.2",
     "font-awesome": "^4.7.0",
