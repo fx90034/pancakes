@@ -12,7 +12,7 @@ class App extends Component {
       a:"",
       alr:[],
       sortby: "activity",
-      actclass: "sorta",
+      actclass: "sorta orange",
       relclass: "sortr",
     };
     this.handleChange = this.handleChange.bind(this);
@@ -96,6 +96,10 @@ class App extends Component {
     this.forceUpdate();
   }
 
+  componentDidMount(){
+
+  }
+
 render() {
     return (
       <div className="App">
@@ -108,23 +112,16 @@ render() {
             </form>
           </div>
         </header>
-        <div class="options">
-          <p class="sort">Sort by:</p>
-          <button class={this.state.actclass} onClick={this.togact}>Activity</button>
-          <button class={this.state.relclass} onClick={this.togrel}>Relevance</button>
+        <div className="options">
+          <p className="sort">Sort by:</p>
+          <button className={this.state.actclass} onClick={this.togact}>Activity</button>
+          <button className={this.state.relclass} onClick={this.togrel}>Relevance</button>
         </div>
         <Pancake questions={this.state.alr}/>
       </div>
       
     );
   }
-
-
-
-
-
-
-
 
 }
 

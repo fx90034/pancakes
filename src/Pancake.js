@@ -28,7 +28,7 @@ export class Pancake extends React.Component {
 									data.title = data.title.replace("&quot", "\"");`
 					
 						return <div className="listcont">
-							<div className="left1 pizza">{data.title}</div>
+							<div className="left1 pizza"><a href={data.link}>{data.title}</a></div>
 							<div >
 								<div ></div>
 								<div className="left1">
@@ -52,7 +52,7 @@ export class Pancake extends React.Component {
 									data.title = data.title.replace("&quot", "\"");`
 					
 					return <div className="listcont">
-						<div className="left1">{data.title}</div>
+						<div className="left1"><a href={data.link}>{data.title}</a></div>
 						<div >
 							<div ></div>
 							<div className="left1">
@@ -69,7 +69,7 @@ export class Pancake extends React.Component {
 				  }
 				  else{
 				  	return <div className="listcont">
-						<div className="left1">{data.title}</div>
+						<div className="left1"><a href={data.link}>{data.title}</a></div>
 					</div>;
 				  }
 				})}
