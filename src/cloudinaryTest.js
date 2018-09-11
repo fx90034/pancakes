@@ -59,38 +59,40 @@ async function getSnips(){
 
 
   });
+}
 
-  // var index = client.initIndex(url);
+
+  var index = client.initIndex(url);
   //
-  index.addObjects(snippets, function(err, content) {
-    if (err) {
-      console.error(err);
-    }
-  });
-
-  index.setSettings({
-    'searchableAttributes': [
-      'text'
-    ]
-  }, function(err, content){
-    console.log(content);
-  });
-
-
-
+//   index.addObjects(snippets, function(err, content) {
+//     if (err) {
+//       console.error(err);
+//     }
+//   });
+//
+//   index.setSettings({
+//     'searchableAttributes': [
+//       'text'
+//     ]
+//   }, function(err, content){
+//     console.log(content);
+//   });
+//
+//
+//
   index.search('button', function(err, content) {
     console.log(content.hits);
   });
-}
 
-//var index = client.initIndex(url);
-
-client.listIndexes(function(err, content) {
-  if (err) throw err;
-
-  console.log(content);
-});
 //
+// //var index = client.initIndex(url);
+//
+// client.listIndexes(function(err, content) {
+//   if (err) throw err;
+//
+//   console.log(content);
+// });
+// //
 // index.search('center', function(err, content) {
 //   console.log(content.hits);
 // });
