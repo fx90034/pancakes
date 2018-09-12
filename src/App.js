@@ -5,6 +5,8 @@ import './App.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 import axios from 'axios';
 
+import cheerio from 'cheerio';
+
 class App extends Component {
   constructor() {
     super();
@@ -23,6 +25,9 @@ class App extends Component {
   }
 
   async search (q){
+    this.setState({
+      query: q
+    });
     const STACK_API_KEY = 'Wf4WyQYvjRRtsqcIFLEPpg((';
     let unds = ["how","to","a","an","i","am","do"];
     let b = q.toLowerCase().split(" ");
@@ -36,7 +41,6 @@ class App extends Component {
     let aurl = 'https://api.stackexchange.com//2.2/search?order=desc&sort='+this.state.sortby +'&intitle='+a +'&site=stackoverflow&key='+STACK_API_KEY;
     console.log(aurl);
     this.state.alr = await axios.get(aurl).then(function(res){
-      console.log(res.data.items);
       for(let i = 0; i < res.data.items.length; i++){
         let el = res.data.items[i];
         delete el.owner;
@@ -54,6 +58,32 @@ class App extends Component {
           el.index = i;
         }
       }
+        for(let i = 0; i < res.data.items.length; i++){
+          let el = res.data.items[i];
+          el.query = q;
+          var buildUrl  = el.link;
+      		buildUrl = buildUrl.substr(buildUrl.indexOf('questions/')+10);
+      		buildUrl = buildUrl.substr(0, buildUrl.indexOf('/'));
+          const getSnippets = async () => {
+              return await axios.get("http://localhost:5000/api/"+buildUrl).then(function(res){
+        			const $ = cheerio.load(res.data);
+              const snippets = [];
+              $('.answer').each(function(i, elem) {
+              var baseurl = 'https://stackoverflow.com/questions/'
+              snippets[i] = {
+                id: $(this).attr('id'),
+                text: $(this).find('code').text()
+              }
+
+              });
+        			return snippets;
+        		});
+            };
+          el.snippets = getSnippets(buildUrl).then(snip => {
+            return snip;
+          })
+
+        }
       return res.data.items;
     });
 
@@ -68,6 +98,7 @@ class App extends Component {
     e.preventDefault();
     console.log("sub");
     this.search(this.state.a);
+    this.forceUpdate();
   }
 
   togact(){
@@ -102,6 +133,7 @@ class App extends Component {
 
 render() {
     return (
+
       <div className="App">
         <header id="App-header">
           <h1 id="App-title">pancakes</h1>
@@ -119,7 +151,7 @@ render() {
         </div>
         <Pancake questions={this.state.alr}/>
       </div>
-      
+
     );
   }
 
