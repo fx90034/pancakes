@@ -13,8 +13,8 @@ class App extends Component {
       a:"",
       alr:[],
       sortby: "activity",
-      actclass: "sorta orange",
-      relclass: "sortr",
+      actclass: "sorta orange actres",
+      relclass: "sortr actres",
     };
     this.handleChange = this.handleChange.bind(this);
     this.search = this.search.bind(this);
@@ -101,27 +101,27 @@ class App extends Component {
   }
 
   togact(){
-    this.state.sortby = "activity";
-    if(this.state.actclass !== "sorta orange"){
-      this.setState({actclass: "sorta orange"});
-      this.setState({relclass: "sortr"});
+    this.setState({sortby: "activity"});
+    if(this.state.actclass !== "sorta orange actres"){
+      this.setState({actclass: "sorta orange actres"});
+      this.setState({relclass: "sortr actres"});
     }
     else{
-      this.setState({actclass: "sorta"});
-      this.setState({relclass: "sortr orange"});
+      this.setState({actclass: "sorta actres"});
+      this.setState({relclass: "sortr orange actres"});
     }
     this.forceUpdate();
   }
 
   togrel(){
-    this.state.sortby = "relevance";
-    if(this.state.relclass !== "sortr orange"){
-      this.setState({relclass: "sortr orange"});
-      this.setState({actclass: "sorta"});
+    this.setState({sortby: "relevance"});
+    if(this.state.relclass !== "sortr orange actres"){
+      this.setState({relclass: "sortr orange actres"});
+      this.setState({actclass: "sorta actres"});
     }
     else{
-      this.setState({relclass: "sortr"});
-      this.setState({actclass: "sorta orange"});
+      this.setState({relclass: "sortr actres"});
+      this.setState({actclass: "sorta orange actres"});
     }
     this.forceUpdate();
   }

@@ -18,8 +18,8 @@ export class Snippets extends React.Component {
   }
 
   async componentDidMount() {
-    const STACK_API_KEY = 'Wf4WyQYvjRRtsqcIFLEPpg(('
-    const client = algolia('M5GUPZR9NF','1c60567fa57df21fd50a4fa5e491edb2')
+    const STACK_API_KEY = 'Wf4WyQYvjRRtsqcIFLEPpg((';
+    const client = algolia('M5GUPZR9NF','1c60567fa57df21fd50a4fa5e491edb2');
     var buildUrl  = this.props.url;
     buildUrl = buildUrl.substr(buildUrl.indexOf('questions/')+10);
     buildUrl = buildUrl.substr(0, buildUrl.indexOf('/'));
