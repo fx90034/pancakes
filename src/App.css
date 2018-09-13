@@ -14,18 +14,17 @@
   text-align:left;
 }
 
-
 #search-bar{
   display:inline-block;
   margin-bottom:20px;
 }
 
-.dropdown 
+.dropdown
 {
   display:inline-block;
 }
 
-.dropdown:hover .dropdown-content 
+.dropdown:hover .dropdown-content
 {
     display: block;
 }
@@ -126,22 +125,8 @@ box-shadow:
 }
 
 
-button:focus{
+.submit:focus,.actres:focus{
   background-color:white;
-  -webkit-box-shadow:
-0 22px 2px 0 rgba(199, 199, 199, 0.25),
-0 1px 1px 0 #fff,
-
-0 15px 15px 0 rgba(41, 41, 41, 0.02) inset;
--moz-box-shadow:
-0 2px 2px 0 rgba(199, 199, 199, 0.25),
-0 1px 1px 0 #fff,
-
-0 15px 15px 0 rgba(41, 41, 41, 0.02) inset;
-box-shadow:
-0 2px 2px 0 rgba(199, 199, 199, 0.25),
-0 1px 1px 0 #fff,
-0 15px 15px 0 rgba(41, 41, 41, 0.02) inset;
 }
 
 blockquote{
@@ -180,5 +165,3 @@ code{
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-
-  
