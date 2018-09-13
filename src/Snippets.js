@@ -54,16 +54,16 @@ export class Snippets extends React.Component {
 
     return (
       <ul>
-          { this.state.snippets.map(snippets => <blockquote key={snippets.id}>
-          <code>
-            <a target="blank" href={this.props.url + '#' + snippets.id}>
-              {snippets.text}
-            </a>
-            </code>
+          { this.state.snippets.map(snippets =>
+          <blockquote key={snippets.id}>
+            <code>
+              <a target="blank" href={this.props.url + '#' + snippets.id}>
+                {snippets.text}
+              </a>
+              </code>
           </blockquote>)}
       </ul>
   );
 
-  //   </div>);
   }
 }

@@ -49,16 +49,14 @@ export class Pancake extends React.Component {
 
 						return <div className="listcont">
 							<div className="left1 pizza"><a href={data.link}>{data.title}</a></div>
-							<div >
-								<div ></div>
+							<div>
 								<div className="left1">
 									<Snippets url={data.link}/>
-
 								</div>
 							</div>
 						</div>;
 
-					} 
+					}
 				  else{
 				  	return <div className="listcont">
 						<div className="left1"><a href={data.link}>{data.title}</a></div>

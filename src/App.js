@@ -4,7 +4,6 @@ import logo from './logo.svg';
 import './App.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 import axios from 'axios';
-
 import cheerio from 'cheerio';
 
 class App extends Component {
@@ -104,12 +103,12 @@ class App extends Component {
   togact(){
     this.state.sortby = "activity";
     if(this.state.actclass !== "sorta orange"){
-      this.state.actclass= "sorta orange";
-      this.state.relclass="sortr";
+      this.setState({actclass: "sorta orange"});
+      this.setState({relclass: "sortr"});
     }
     else{
-      this.state.actclass= "sorta";
-      this.state.relclass= "sortr orange"
+      this.setState({actclass: "sorta"});
+      this.setState({relclass: "sortr orange"});
     }
     this.forceUpdate();
   }
@@ -117,12 +116,12 @@ class App extends Component {
   togrel(){
     this.state.sortby = "relevance";
     if(this.state.relclass !== "sortr orange"){
-      this.state.relclass="sortr orange";
-      this.state.actclass="sorta";
+      this.setState({relclass: "sortr orange"});
+      this.setState({actclass: "sorta"});
     }
     else{
-      this.state.relclass="sortr";
-      this.state.actclass="sorta orange";
+      this.setState({relclass: "sortr"});
+      this.setState({actclass: "sorta orange"});
     }
     this.forceUpdate();
   }
