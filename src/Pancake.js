@@ -9,6 +9,14 @@ export class Pancake extends React.Component {
 		this.state = {
 			hiddensnips:[],
 		};
+
+		this.exp = this.exp.bind(this);
+	}
+
+	exp(index){
+		let linkbois = this.props.questions[index].link;
+		this.state.hiddensnips[index] = <Snippets url={linkbois}/>;
+		this.forceUpdate();
 	}
 
 	// state= {
@@ -17,30 +25,7 @@ export class Pancake extends React.Component {
 	// }
 
 	async componentDidMount() {
-		this.state.hiddensnips.push(
-			<div>a</div>
-		);
-		this.state.hiddensnips.push(
-			<div>a</div>
-		);
-		this.state.hiddensnips.push(
-			<div>a</div>
-		);
-		this.state.hiddensnips.push(
-			<div>a</div>
-		);
-		this.state.hiddensnips.push(
-			<div>a</div>
-		);
-		this.state.hiddensnips.push(
-			<div>a</div>
-		);
-		this.state.hiddensnips.push(
-			<div>a</div>
-		);
-		this.state.hiddensnips.push(
-			<div>a</div>
-		);
+
 		// axios.get("http://stackoverflow.com/questions/39979775")
 		// .then(res => {
 		// 	console.log("got peopes");
@@ -74,7 +59,6 @@ export class Pancake extends React.Component {
 					const snipid = index;
 
 					if(data.index < 3){
-
 						return <div className="listcont" key={index}>
 							<div className="left1 pizza" key={data.title}>
 								<a href={data.link}>{data.title}</a>
@@ -85,15 +69,14 @@ export class Pancake extends React.Component {
 								</div>
 							</div>
 						</div>;
-
 					}
 				  else{
 				  	return <div className="listcont" key={index}>
 							<div className="left1" key={data.tile}>
 								<a href={data.link}>{data.title}</a>
+								<i onClick={() => this.exp(index)} className="fa fa-chevron-down chev"></i>
 								{this.state.hiddensnips[snipid]}
 							</div>
-
 						</div>;
 				  }
 				})}
