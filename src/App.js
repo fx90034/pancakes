@@ -56,33 +56,32 @@ class App extends Component {
         if(i < 3){
           el.index = i;
         }
+        el.query = q;
+        var buildUrl  = el.link;
+        buildUrl = buildUrl.substr(buildUrl.indexOf('questions/')+10);
+        buildUrl = buildUrl.substr(0, buildUrl.indexOf('/'));
+        const getSnippets = async () => {
+            return await axios.get("http://localhost:5000/api/"+buildUrl).then(function(res){
+            const $ = cheerio.load(res.data);
+            const snippets = [];
+            $('.answer').each(function(i, elem) {
+            var baseurl = 'https://stackoverflow.com/questions/'
+            snippets[i] = {
+              id: $(this).attr('id'),
+              text: $(this).find('code').text()
+            }
+
+            });
+            return snippets;
+          });
+          };
+        el.snippets = getSnippets(buildUrl).then(snip => {
+          return snip;
+        })
       }
-        for(let i = 0; i < res.data.items.length; i++){
-          let el = res.data.items[i];
-          el.query = q;
-          var buildUrl  = el.link;
-      		buildUrl = buildUrl.substr(buildUrl.indexOf('questions/')+10);
-      		buildUrl = buildUrl.substr(0, buildUrl.indexOf('/'));
-          const getSnippets = async () => {
-              return await axios.get("http://localhost:5000/api/"+buildUrl).then(function(res){
-        			const $ = cheerio.load(res.data);
-              const snippets = [];
-              $('.answer').each(function(i, elem) {
-              var baseurl = 'https://stackoverflow.com/questions/'
-              snippets[i] = {
-                id: $(this).attr('id'),
-                text: $(this).find('code').text()
-              }
-
-              });
-        			return snippets;
-        		});
-            };
-          el.snippets = getSnippets(buildUrl).then(snip => {
-            return snip;
-          })
-
-        }
+      while(res.data.items.length > 15){
+        res.data.items.pop();
+      }
       return res.data.items;
     });
 

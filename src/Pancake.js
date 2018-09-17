@@ -72,7 +72,7 @@ export class Pancake extends React.Component {
 					}
 				  else{
 				  	return <div className="listcont" key={index}>
-							<div className="left1" key={data.tile}>
+							<div className="left1 sammich" key={data.tile}>
 								<a href={data.link}>{data.title}</a>
 								<i onClick={() => this.exp(index)} className="fa fa-chevron-down chev"></i>
 								{this.state.hiddensnips[snipid]}
