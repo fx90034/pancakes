@@ -40,6 +40,9 @@ class App extends Component {
     let aurl = 'https://api.stackexchange.com//2.2/search?order=desc&sort='+this.state.sortby +'&intitle='+a +'&site=stackoverflow&key='+STACK_API_KEY;
     console.log(aurl);
     this.state.alr = await axios.get(aurl).then(function(res){
+      while(res.data.items.length > 15){
+        res.data.items.pop();
+      }
       for(let i = 0; i < res.data.items.length; i++){
         let el = res.data.items[i];
         delete el.owner;
@@ -78,9 +81,6 @@ class App extends Component {
         el.snippets = getSnippets(buildUrl).then(snip => {
           return snip;
         })
-      }
-      while(res.data.items.length > 15){
-        res.data.items.pop();
       }
       return res.data.items;
     });
