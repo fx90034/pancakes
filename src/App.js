@@ -63,24 +63,7 @@ class App extends Component {
         var buildUrl  = el.link;
         buildUrl = buildUrl.substr(buildUrl.indexOf('questions/')+10);
         buildUrl = buildUrl.substr(0, buildUrl.indexOf('/'));
-        const getSnippets = async () => {
-            return await axios.get("http://localhost:5000/api/"+buildUrl).then(function(res){
-            const $ = cheerio.load(res.data);
-            const snippets = [];
-            $('.answer').each(function(i, elem) {
-            var baseurl = 'https://stackoverflow.com/questions/'
-            snippets[i] = {
-              id: $(this).attr('id'),
-              text: $(this).find('code').text()
-            }
 
-            });
-            return snippets;
-          });
-          };
-        el.snippets = getSnippets(buildUrl).then(snip => {
-          return snip;
-        })
       }
       return res.data.items;
     });
@@ -100,28 +83,22 @@ class App extends Component {
   }
 
   togact(){
-    this.setState({sortby: "activity"});
-    if(this.state.actclass !== "sorta orange actres"){
+
+    if(this.state.sortby !== 'activity'){
       this.setState({actclass: "sorta orange actres"});
       this.setState({relclass: "sortr actres"});
     }
-    else{
-      this.setState({actclass: "sorta actres"});
-      this.setState({relclass: "sortr orange actres"});
-    }
+    this.setState({sortby: "activity"});
     this.forceUpdate();
   }
 
   togrel(){
-    this.setState({sortby: "relevance"});
-    if(this.state.relclass !== "sortr orange actres"){
+
+    if(this.state.sortby !== 'relevance'){
       this.setState({relclass: "sortr orange actres"});
       this.setState({actclass: "sorta actres"});
     }
-    else{
-      this.setState({relclass: "sortr actres"});
-      this.setState({actclass: "sorta orange actres"});
-    }
+    this.setState({sortby: "relevance"});
     this.forceUpdate();
   }
 
